@@ -11,21 +11,22 @@ import {
 // Components
 import { Navbar } from './components/Navbar';
 import { HomePage } from './components/pages/Homepage';
+import { LoginPage } from './components/pages/Loginpage';
 
 
 function App() {
   return (
     <div className="App">
       <Router>
-
         <Navbar />
-
         <Switch>
-          <Route exact path="">
+          <Route exact path="/">
             <HomePage></HomePage>
           </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
         </Switch>
-
       </Router>
     </div>
   );
