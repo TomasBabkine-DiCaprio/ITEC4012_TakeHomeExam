@@ -4,6 +4,9 @@ import {
     NavLink
 } from "react-router-dom";
 
+// Import the logout button
+import { Logout } from "../Logout";
+
 export const Navbar = () => {
     return(
         <nav className="navbar">
@@ -18,7 +21,7 @@ export const Navbar = () => {
                     <NavLink activeClassName="nav-selected" to="/me"><h1>My Profile</h1></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/logout"><h1>Logout</h1></NavLink>
+                    <Logout />
                 </li>
             </ul>
         </nav>

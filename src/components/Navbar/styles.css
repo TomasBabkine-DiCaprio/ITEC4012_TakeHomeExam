@@ -27,17 +27,27 @@
     text-decoration: none;
 }
 
-.navbar a h1 {
+.navbar a h1, .navbar button h1 {
     font-size: 0.8em;
     font-family: helvetica;
     color: #60DBFB;
-    font-weight: 400;
+    font-weight: 400;   
+    cursor: pointer;
 
     transition: all .2s ease;
 }
 
-.navbar a h1:hover {
+.navbar button h1 {
+    font-size: 1.5em;
+}
+
+.navbar a h1:hover, .navbar button h1:hover {
     transform: scale(1.1);
+}
+
+.navbar button {
+    border: none;
+    background: none;
 }
 
 .navbar .nav-selected h1 {
