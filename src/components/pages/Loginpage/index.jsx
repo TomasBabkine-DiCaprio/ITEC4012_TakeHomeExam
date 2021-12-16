@@ -60,7 +60,7 @@ export const LoginPage = () => {
                 // Login form
                 action === "login" && (
                     <form className="form-layout" onSubmit={handleSubmit(loginUser)}>
-                        <h1>Welcome back, please sign in!</h1>
+                        <h1>Welcome back, please sign in</h1>
 
                         <div className="form-inputs">
                             <div className="form-input">
@@ -89,25 +89,33 @@ export const LoginPage = () => {
                 // Register form
                 action === "signup" && (
                     <form className="form-layout" onSubmit={handleSubmit(signUpUser)}>
-                        <h1>Create an account now!</h1>
-                        <br />
+                        <h1>Create an account</h1>
 
-                        <label htmlFor="user">Email</label>
-                        <input type="email" required name="user" required {...register('user')} />
-                        <br />
-                        <br />
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" required {...register('password')} />
-                        <br />
-                        <br />
-                        <label htmlFor="passwordConfirm">Confirm Password</label>
-                        <input type="password" name="passwordConfirm" required {...register('passwordConfirm')} />
-                        <br />
-                        <br />
-                        <input type="submit" value="Sign Up"></input>
-                        <br />
-                        <p>Have an account already?</p>
-                        <button onClick={() => setAction("login")}>Login</button>
+                        <div className="form-inputs">
+                            <div className="form-input">
+                                <label htmlFor="user">Email</label>
+                                <input type="email" required name="user" required {...register('user')} />
+                            </div>
+
+                            <div className="form-input">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" name="password" required {...register('password')} />
+                            </div>
+                            
+                            <div className="form-input">
+                                <label htmlFor="passwordConfirm">Confirm Password</label>
+                                <input type="password" name="passwordConfirm" required {...register('passwordConfirm')} />
+                            </div>
+                            
+                        </div>
+                        
+
+                        <input type="submit" className="signupButton" value="Sign Up"></input>
+                        
+                        <div className="signup"> 
+                            <p>Have an account already?</p>
+                            <button className="loginButton" onClick={() => setAction("login")}>Login</button>
+                        </div>
                     </form>
                 )
             }
