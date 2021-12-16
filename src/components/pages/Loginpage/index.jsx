@@ -61,20 +61,26 @@ export const LoginPage = () => {
                 action === "login" && (
                     <form className="form-layout" onSubmit={handleSubmit(loginUser)}>
                         <h1>Welcome back, please sign in!</h1>
-                        <br />
 
-                        <label htmlFor="user">Username</label>
-                        <input type="email" name="user" required {...register('user')} />
-                        <br />
-                        <br />
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" required {...register('password')} />
-                        <br />
-                        <br />
-                        <input type="submit" value="Login"></input>
-                        <br />
-                        <p>Don't have an account with us yet? Create a new account with your email and password</p>
-                        <button onClick={() => setAction("signup")}>Sign Up</button>
+                        <div className="form-inputs">
+                            <div className="form-input">
+                                <label htmlFor="user">Username</label>
+                                <input type="email" name="user" required {...register('user')} />
+                            </div>
+
+                            <div className="form-input">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" name="password" required {...register('password')} />
+                            </div>
+                        </div>
+
+                        <input type="submit" className="loginButton" value="Login"></input>
+                        
+                        <div className="signup"> 
+                            <p>Don't have an account yet?</p>
+                            <p>Create a new account with your email and password</p>
+                            <button className="signupButton" onClick={() => setAction("signup")}>Sign Up</button>
+                        </div>
                     </form>
                 )
             }
