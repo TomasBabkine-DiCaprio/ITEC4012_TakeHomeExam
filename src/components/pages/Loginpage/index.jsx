@@ -7,6 +7,9 @@ import { useHistory } from "react-router-dom";
 // Import firebase authentication
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
+// Import react-id-generator
+import nextId from "react-id-generator";
+
 export const LoginPage = () => {
 
     // Email and password
@@ -52,6 +55,42 @@ export const LoginPage = () => {
         } catch (error) {
             console.log("Error from Firebase", error)
         }
+
+        // Also add this user to the database, so that we can remember thair username and display it later!
+        try {
+            // Generate a new id for this user
+            const [userId] = nextId();
+
+
+            // Format data from form
+            const formattedData = {
+                fields: {
+                    id: {
+                        stringValue: userId
+                    }, 
+                    email: {
+                        stringValue: formVals.email
+                    },
+                    userName: {
+                        stringValue: formVals.username
+                    }
+                }
+            }
+
+            const response = await fetch('https://firestore.googleapis.com/v1/projects/itec4012-takehome/databases/(default)/documents/users/',
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(formattedData)
+            });
+
+            console.log(userId, formVals.email, formVals.username);
+        } catch (error) {
+            console.log("Error from Firebase", error)
+        }
+
     }
 
     return (
@@ -93,8 +132,8 @@ export const LoginPage = () => {
 
                         <div className="form-inputs">
                             <div className="form-input">
-                                <label htmlFor="user">Email</label>
-                                <input type="email" required name="user" required {...register('user')} />
+                                <label htmlFor="email">Email</label>
+                                <input type="email" required name="email" required {...register('email')} />
                             </div>
 
                             <div className="form-input">
@@ -105,6 +144,11 @@ export const LoginPage = () => {
                             <div className="form-input">
                                 <label htmlFor="passwordConfirm">Confirm Password</label>
                                 <input type="password" name="passwordConfirm" required {...register('passwordConfirm')} />
+                            </div>
+
+                            <div className="form-input">
+                                <label htmlFor="userName">User name</label>
+                                <input type="username" name="userName" required {...register('username')} />
                             </div>
                             
                         </div>
