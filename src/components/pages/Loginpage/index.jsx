@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom";
 // Import firebase authentication
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
-// Import react-id-generator
-import nextId from "react-id-generator";
+// Import react-uuid
+import uuid from 'react-uuid';
 
 export const LoginPage = () => {
 
@@ -29,10 +29,9 @@ export const LoginPage = () => {
     const loginUser = async(formVals) => {
 
         try {
-            console.log("Login submitted", formVals);
             const auth = getAuth();
 
-            const loginUser = await signInWithEmailAndPassword(auth, formVals.user, formVals.password);
+            const loginUser = await signInWithEmailAndPassword(auth, formVals.email, formVals.password);
 
             // Redirect user to homepage
             history.push('/');
@@ -47,8 +46,9 @@ export const LoginPage = () => {
         console.log("Sign up user", formVals);
         const auth = getAuth();
 
+        // create user in authentication
         try {
-            const signUpUser = await createUserWithEmailAndPassword(auth, formVals.user, formVals.password);
+            const signUpUser = await createUserWithEmailAndPassword(auth, formVals.email, formVals.password);
             console.log("New user was created", signUpUser);
 
             history.push('/');
@@ -56,11 +56,10 @@ export const LoginPage = () => {
             console.log("Error from Firebase", error)
         }
 
-        // Also add this user to the database, so that we can remember thair username and display it later!
+        // Also add this user to the documents database, so that we can remember thair username and display it later!
         try {
             // Generate a new id for this user
-            const [userId] = nextId();
-
+            const [userId] = uuid();
 
             // Format data from form
             const formattedData = {
@@ -77,6 +76,7 @@ export const LoginPage = () => {
                 }
             }
 
+            // add user infor to database
             const response = await fetch('https://firestore.googleapis.com/v1/projects/itec4012-takehome/databases/(default)/documents/users/',
             {
                 headers: {
@@ -103,8 +103,8 @@ export const LoginPage = () => {
 
                         <div className="form-inputs">
                             <div className="form-input">
-                                <label htmlFor="user">Username</label>
-                                <input type="email" name="user" required {...register('user')} />
+                                <label htmlFor="email">Email</label>
+                                <input type="email" name="email" required {...register('email')} />
                             </div>
 
                             <div className="form-input">
