@@ -86,7 +86,6 @@ export const LoginPage = () => {
                 body: JSON.stringify(formattedData)
             });
 
-            console.log(userId, formVals.email, formVals.username);
         } catch (error) {
             console.log("Error from Firebase", error)
         }
