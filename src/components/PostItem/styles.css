@@ -1,0 +1,38 @@
+.post {
+    margin: 2em auto;
+    width: 50%;
+    background-color: #222;
+
+    border-radius: 10px;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.postUser {
+    text-align: left;
+    border-bottom: 1px solid #c4ecf7;
+    padding: 2px;
+}
+
+.post .postUser h1 {
+    font-weight: 600;
+    color: white;
+    font-size: 1.2em;
+    margin-left: 1em;
+}
+
+.post .postContent {
+    padding: 6px 0px 6px 4px;
+}
+
+.post .postContent p {
+    color: white;
+    font-size: 1em;
+    margin-left: 1em;
+    text-align: left;
+}
+
+.post .postContent img {
+    max-width: 300px;
+}
+
