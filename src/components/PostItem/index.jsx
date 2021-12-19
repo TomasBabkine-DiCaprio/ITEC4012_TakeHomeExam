@@ -11,7 +11,9 @@ export const PostItem = (props) => {
             </div>
             <div className='postContent'>
                 <p>{text}</p>
-                <img src={img} alt="post-image" />
+                {
+                    img && <img src={img} alt="post-image" />
+                }
             </div>
         </div>
     )

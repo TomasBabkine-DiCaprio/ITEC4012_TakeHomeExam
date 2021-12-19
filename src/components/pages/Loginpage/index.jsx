@@ -56,40 +56,6 @@ export const LoginPage = () => {
             console.log("Error from Firebase", error)
         }
 
-        // Also add this user to the documents database, so that we can remember thair username and display it later!
-        try {
-            // Generate a new id for this user
-            const [userId] = uuid();
-
-            // Format data from form
-            const formattedData = {
-                fields: {
-                    id: {
-                        stringValue: userId
-                    }, 
-                    email: {
-                        stringValue: formVals.email
-                    },
-                    userName: {
-                        stringValue: formVals.username
-                    }
-                }
-            }
-
-            // add user infor to database
-            const response = await fetch('https://firestore.googleapis.com/v1/projects/itec4012-takehome/databases/(default)/documents/users/',
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                method: "POST",
-                body: JSON.stringify(formattedData)
-            });
-
-        } catch (error) {
-            console.log("Error from Firebase", error)
-        }
-
     }
 
     return (
@@ -149,10 +115,8 @@ export const LoginPage = () => {
                                 <label htmlFor="userName">User name</label>
                                 <input type="username" name="userName" required {...register('username')} />
                             </div>
-                            
                         </div>
                         
-
                         <input type="submit" className="signupButton" value="Sign Up"></input>
                         
                         <div className="signup"> 

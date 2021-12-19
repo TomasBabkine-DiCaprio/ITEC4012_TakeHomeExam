@@ -52,8 +52,13 @@ export const HomePage = () => {
       const response = await fetch('https://firestore.googleapis.com/v1/projects/itec4012-takehome/databases/(default)/documents/posts/');
       const data = await response.json();
 
-      const formattedPostsData = data.documents.map((item) => {
+      let formattedPostsData = data.documents.map((item) => {
         return item.fields;
+      });
+
+      // Sort array by date descending so that new posts are at the top of the page
+      formattedPostsData.sort(function(a, b) {
+        return new Date(b.date.timestampValue) - new Date(a.date.timestampValue);
       });
 
       // Update local state

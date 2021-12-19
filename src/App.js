@@ -12,7 +12,7 @@ import {
 import { Navbar } from './components/Navbar';
 import { HomePage } from './components/pages/Homepage';
 import { LoginPage } from './components/pages/Loginpage';
-
+import { ProfilePage } from './components/pages/Profilepage';
 
 function App() {
   return (
@@ -25,6 +25,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/me">
+            <ProfilePage />
           </Route>
         </Switch>
       </Router>
