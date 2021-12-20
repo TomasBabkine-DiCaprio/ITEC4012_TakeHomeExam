@@ -111,10 +111,6 @@ export const LoginPage = () => {
                                 <input type="password" name="passwordConfirm" required {...register('passwordConfirm')} />
                             </div>
 
-                            <div className="form-input">
-                                <label htmlFor="userName">User name</label>
-                                <input type="username" name="userName" required {...register('username')} />
-                            </div>
                         </div>
                         
                         <input type="submit" className="signupButton" value="Sign Up"></input>

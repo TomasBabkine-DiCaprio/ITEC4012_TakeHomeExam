@@ -12,7 +12,7 @@
     width: 100%;
 }
 
-.homepage, .profilepage {
+.homepage, .profilepage, .loginpage {
     margin-top: 120px;
 }
 
@@ -29,6 +29,10 @@
 
 .navbar li {
     margin: 1rem;
+}
+
+.navbar .navbar-list {
+    padding-right: 1em;
 }
 
 .navbar a {

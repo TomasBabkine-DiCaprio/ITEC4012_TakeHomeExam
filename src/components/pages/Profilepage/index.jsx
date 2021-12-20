@@ -143,7 +143,7 @@ export const ProfilePage = () => {
                             <div className="form-inputs">
                                 <div className="form-input">
                                     <label htmlFor="text">Caption</label>
-                                    <input type="text" size="30" name="text" required {...register('text')} />
+                                    <textarea type="text" rows="2" cols="25" name="text" required {...register('text')} />
                                 </div>
 
                                 <div className="form-input">
