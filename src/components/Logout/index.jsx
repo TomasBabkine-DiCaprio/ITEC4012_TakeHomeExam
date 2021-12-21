@@ -3,35 +3,35 @@ import { useEffect, useState } from 'react';
 
 export const Logout = () => {
 
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-    // Check if current user is logged in
-    useEffect(
-       () => {
-         const auth = getAuth();
-         onAuthStateChanged(auth, (user) => {
-           if (user) {
-             setUser(user);
-           } else {
-               setUser(null);
-           }
-         })
-       }, []
-     );
-
-    const logoutUser = async() => {
-        const auth = getAuth();
-
-        try {
-            await signOut(auth);
-        } catch (error) {
-            console.log(error);
+  // Check if current user is logged in
+  useEffect(
+    () => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
         }
-    }
+      })
+    }, []
+  );
 
-    return (
-        user && <button className="logout-btn" onClick={logoutUser}>
-            <h1>Logout</h1>
-        </button>
-    )
+  const logoutUser = async() => {
+    const auth = getAuth();
+
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+  return (
+    user && <button className="logout-btn" onClick={logoutUser}>
+      <h1>Logout</h1>
+    </button>
+  )
 }

@@ -15,12 +15,25 @@ export const Navbar = () => {
 
     // If user is logged in, then display the home page and new posts button
     // If not, don't
-    const auth = getAuth();
+    //const auth = getAuth();
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        user ? setLoggedIn(true) : setLoggedIn(false);
-    });
+    // const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //     user ? setLoggedIn(true) : setLoggedIn(false);
+    // });
+
+    useEffect(
+      () => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setLoggedIn(true);
+          } else {
+            setLoggedIn(null);
+          }
+        })
+      }, []
+    );
     
     return(
         <nav className="navbar">
