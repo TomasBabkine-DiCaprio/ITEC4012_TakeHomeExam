@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Tomas Babkine-Di Caprio
+# ITEC4012 - Take Home Exam - Fall 2021
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For this take home exam, students had to design and build a full stack media application using React for the front-end, and Google Firebase for the back-end and user authentication.
 
-## Available Scripts
+I created React Overflow, a platform where developers of all calibers can share insights into how React works and help each other out.
 
-In the project directory, you can run:
+Use the homepage to see a collection of all posts sorted by most recent to oldest and use the profile page to see all of your posts as well as add a new post. A new post can contain text as well as an image (not required). 
 
-### `npm start`
+## Components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Here is how the app is broken into components:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**1. pages / home-page**
+This component is rendered when the user first opens the app using a browser. The homepage fetches all the posts from the database and displays them dynamically in a post component.
 
-### `npm test`
+**2. pages / my profile**
+This page displays all the posts that the current logged in user posted. It also contains the form to add a new post to the app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**3. pages / login page**
+This page contains a form for the user to either register, or login to React Overflow. If the user isn't logged in, they are redirected to this logout page.
 
-### `npm run build`
+**4. Navbar**
+This component is rendered on each page. It also checks wether or not the user is logged in. It only displays the links to the homepage and profile page if the user is logged in.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**5. Post item**
+This component takes the content of the post as parameters and then displays them with styling on the home page and profile page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**6. Logout**
+Handles logging out the user.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Global Context
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To access all of the posts stored in the database at every level of the app, this information is stored in the global context which is then wrapped around the app. This is done when the information is first fetched from the API, but also used as a state, and updated as soon as the information in the database is modified or when a new post is added.

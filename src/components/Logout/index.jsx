@@ -1,7 +1,11 @@
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'; 
 import { useEffect, useState } from 'react';
 
+import { useHistory } from "react-router";
+
 export const Logout = () => {
+
+  const history = useHistory();
 
   const [user, setUser] = useState(null);
 
@@ -9,13 +13,18 @@ export const Logout = () => {
   useEffect(
     () => {
       const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
+      let unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
           setUser(user);
         } else {
           setUser(null);
         }
       })
+
+      // Stop listening to the state change
+      return () => {
+          unsubscribe();
+      }
     }, []
   );
 
@@ -23,9 +32,10 @@ export const Logout = () => {
     const auth = getAuth();
 
     try {
-        await signOut(auth);
+      await signOut(auth);
+      history.push('/');
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   }
 

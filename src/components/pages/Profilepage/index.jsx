@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import { PostItem } from '../../PostItem';
 
 // Firebase authentication
-import { getAuth, onAuthStateChanged } from 'firebase/auth'; 
+import { getAuth } from 'firebase/auth'; 
 import { useHistory } from "react-router";
 
 // Global contexts

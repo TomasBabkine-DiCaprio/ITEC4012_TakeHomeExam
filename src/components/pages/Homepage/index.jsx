@@ -19,11 +19,15 @@ export const HomePage = () => {
   useEffect (
     () => {
       const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
+      let unsubscribe = onAuthStateChanged(auth, (user) => {
         if (!user) {
             history.push('/login');
         }
       })
+
+      return () => {
+          unsubscribe();
+      }
     }, []
   );
 

@@ -25,13 +25,16 @@ export const Navbar = () => {
     useEffect(
       () => {
         const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
+        let subscribe = onAuthStateChanged(auth, (user) => {
           if (user) {
             setLoggedIn(true);
           } else {
             setLoggedIn(null);
           }
         })
+        return () => {
+            subscribe.unsubscribe();
+        }
       }, []
     );
     
